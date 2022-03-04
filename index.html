@@ -4,9 +4,70 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <script src="https://kit.fontawesome.com/7982d21e85.js" crossorigin="anonymous"></script>
+  <title>Tamagotchi</title>
 </head>
 <body>
-  
+  <main>
+    <h1>Tamagochi</h1>
+    <section id="startSection">
+      <form>
+        <h2>Adobt you Gotchi</h2>
+        <legend>Pick a Gotchi</legend>
+        <label>
+          <input type="radio" name="pickAGotchi" id="gotchi1">
+          <i class="fa-solid fa-dog"></i>
+        </label>
+        <label>
+          <input type="radio" name="pickAGotchi" id="gotchi1">
+          <i class="fa-solid fa-spaghetti-monster-flying"></i>
+        </label>
+        <label>
+          <input type="radio" name="pickAGotchi" id="gotchi1">
+          <i class="fa-solid fa-robot"></i>
+        </label>
+        <label for="tamagotchiName">Name:</label>
+        <input type="text" name="tamagotchiName" id="tamagotchiName">
+        <button type="submit" id="start">Start</button>
+      </form>
+    </section>
+
+<!-------------------------------------------------->
+
+    <section id="confirmationSection">
+      <h2>Are you sure this is your gotchi?</h2>
+      <i class="fa-solid fa-spaghetti-monster-flying"></i>
+      <p id="tamagochiName">NAME</p>
+      <button id="cancelBtn">NO</button>
+      <button id="confirmBtn">YES</button>
+    </section>
+
+<!-------------------------------------------------->
+
+    <section id="gameSection">
+      <h2>NAME</h2>
+      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-heart-crack"></i>
+      <i class="fa-solid fa-heart-crack"></i>
+      <i class="fa-solid fa-drumstick-bite"></i>
+
+      <i class="fa-solid fa-spaghetti-monster-flying"></i>
+      <i class="fa-solid fa-poo"></i>
+
+      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-burger"></i>
+      <i class="fa-solid fa-capsules"></i>
+      <i class="fa-solid fa-broom"></i>
+    </section>
+
+<!-------------------------------------------------->
+
+    <section id="endSection">
+      <h2>NAME</h2>
+      <p id="birthAndDeathDate">XXXX - XXXX</p>
+      <p id="timeAlive">10:00:45</p>
+      <button id="startOverBtn">StartOver</button>
+    </section>
+  </main>
 </body>
 </html>
