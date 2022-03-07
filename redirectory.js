@@ -35,7 +35,11 @@ const checkIfCurrentPage = () => {
   }
 };
 checkIfCurrentPage();
-
+//Go to start section
+const goToStartSection = () => {
+  setActiveSection("startSection");
+  hideSections(startSection);
+}
 
 //Go to confirmation section
 const goToConfirmationSection = () => {
