@@ -53,3 +53,9 @@ const goToGameSection = () => {
   setActiveSection("gameSection");
   hideSections(gameSection);
 }
+
+//Go to end section
+const goToEndSection = () => {
+  setActiveSection("endSection");
+  hideSections(endSection);
+}
