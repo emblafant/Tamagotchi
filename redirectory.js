@@ -27,14 +27,17 @@ const hideSections = (activeSection) => {
 
 //--------Page navigation
 
-//If no current page then start page
-const checkIfCurrentPage = () => {
+//get current page
+const checkCurrentPage = () => {
   if (getActiveSection() == null) {
     setActiveSection("startSection");
     hideSections(startSection);
+  } else {
+    activeSection = getActiveSection();
+    hideSections(activeSection);
   }
 };
-checkIfCurrentPage();
+checkCurrentPage();
 
 //Go to start section
 const goToStartSection = () => {
