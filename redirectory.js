@@ -24,3 +24,21 @@ const hideSections = (activeSection) => {
   });
   activeSection.classList.remove("hidden");
 }
+
+//--------Page navigation
+
+//If no current page then start page
+const checkIfCurrentPage = () => {
+  if (getActiveSection() == null) {
+    setActiveSection("startSection");
+    hideSections(startSection);
+  }
+};
+checkIfCurrentPage();
+
+
+//Go to confirmation section
+const goToConfirmationSection = () => {
+  setActiveSection("confirmationSection");
+  hideSections(confirmationSection);
+}
