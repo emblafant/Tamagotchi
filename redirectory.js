@@ -33,8 +33,9 @@ const checkCurrentPage = () => {
     setActiveSection("startSection");
     hideSections(startSection);
   } else {
-    activeSection = getActiveSection();
-    hideSections(activeSection);
+    const activeSection = getActiveSection();
+    const element = document.getElementById(activeSection);
+    hideSections(element);
   }
 };
 checkCurrentPage();
