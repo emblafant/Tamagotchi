@@ -35,6 +35,7 @@ const checkIfCurrentPage = () => {
   }
 };
 checkIfCurrentPage();
+
 //Go to start section
 const goToStartSection = () => {
   setActiveSection("startSection");
@@ -45,4 +46,10 @@ const goToStartSection = () => {
 const goToConfirmationSection = () => {
   setActiveSection("confirmationSection");
   hideSections(confirmationSection);
+}
+
+//Go to game section
+const goToGameSection = () => {
+  setActiveSection("gameSection");
+  hideSections(gameSection);
 }
