@@ -3,6 +3,7 @@
 //Start button (start section)
 document.querySelector("#adoptForm").addEventListener("submit", (e) => {
   goToConfirmationSection();
+  saveAdoptionFormToLocalStorage();
   e.preventDefault();
 })
 
