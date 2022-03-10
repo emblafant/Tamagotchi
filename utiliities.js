@@ -20,4 +20,14 @@ const getGotchiName = () => {
   const gotchiName = JSON.parse(localStorage.getItem("gotchiName"));
   return gotchiName;
 }
+//Get current time and date
+const getCurrentTime = () => {
+  const current = new Date();
+  return current.toLocaleString();
+}
 
+//Save current time and date to local storage
+const setCurrentTime = (key) => {
+  const currentTime = getCurrentTime();
+  localStorage.setItem(key, JSON.stringify(currentTime));
+}
