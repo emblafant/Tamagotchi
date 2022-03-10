@@ -11,9 +11,16 @@ const adoptionFormGetName = () => {
 
 //Save form info in local storage
 const saveAdoptionFormToLocalStorage = () => {
-  const gotchi = adoptionFormGetType();
+  const gotchiTypeInput = adoptionFormGetType();
   const name = adoptionFormGetName();
+  let gotchiType = "";
 
-  localStorage.setItem("gotchiType", JSON.stringify(gotchi));
+  gotchiTypeArr.forEach(type => {
+    if (type.type == gotchiTypeInput) {
+      gotchiType = type;
+    }
+  })
+
+  localStorage.setItem("gotchiType", JSON.stringify(gotchiType));
   localStorage.setItem("gotchiName", JSON.stringify(name));
 }
