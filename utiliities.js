@@ -43,3 +43,16 @@ const setCurrentTime = (key, func) => {
 const getTime = (key) => {
   return JSON.parse(localStorage.getItem(key));
 }
+
+
+//Get all Icons in game section
+const loveIcon = document.querySelector("#loveIcon");
+
+const lonelyIcon = document.querySelector("#lonelyIcon");
+const hungryIcon = document.querySelector("#hungryIcon");
+const sickIcon = document.querySelector("#sickIcon");
+
+const loveBtn = document.querySelector("#loveBtn");
+const feedBtn = document.querySelector("#feedBtn");
+const medicineBtn = document.querySelector("#medicineBtn");
+const cleanBtn = document.querySelector("#cleanBtn");

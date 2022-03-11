@@ -30,9 +30,9 @@ const gotchi3 = new gotchi(
 const gotchiTypeArr = [gotchi1, gotchi2, gotchi3];
 
 //Mood icons
-const moodIcons = {
+/*const moodIcons = {
   "heart": '<i class="fa-solid fa-heart-crack"></i>',
   "brokenHeart": '<i class="fa-solid fa-heart-crack"></i>',
   "sick": '<i class="fa-solid fa-comment-medical"></i>',
   "hungry": '<i class="fa-solid fa-drumstick-bite"></i>'
-}
+}*/
