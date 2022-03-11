@@ -105,11 +105,11 @@ const checkPoop = (currentTime) => {
   const lastFed = getTime("lastFed");
   const difference = currentTime - lastFed;
   //See if the difference is more than 2 hours (7200)
-  if (difference >= 7200) {
+  if (difference >= 10) {
     pooped();
     havePooped("true");
     saveMood("clean", false);
-    document.querySelector("#poop").classList.remove("hidden");
+    show(document.querySelector("#poop"));
   }
 }
 //Check dirty

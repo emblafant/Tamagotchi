@@ -9,9 +9,9 @@ const endSection = document.querySelector("#endSection");
 //Hide all but active section
 const hideSections = (activeSection) => {
   sections.forEach(section => {
-    section.classList.add("hidden");
+    hide(section);
   });
-  activeSection.classList.remove("hidden");
+  show(activeSection);
 }
 
 //--------Page navigation

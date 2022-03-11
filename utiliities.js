@@ -44,6 +44,14 @@ const getTime = (key) => {
   return JSON.parse(localStorage.getItem(key));
 }
 
+//Hide and show
+const hide = (element) => {
+  element.classList.add("hidden");
+}
+const show = (element) => {
+  element.classList.remove("hidden");
+}
+
 
 //Get all Icons in game section
 const loveIcon = document.querySelector("#loveIcon");
