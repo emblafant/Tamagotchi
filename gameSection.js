@@ -141,6 +141,19 @@ const checkSick = (currentTime) => {
 }
 
 
+//Sleeping
+//Check if asleep
+const checkIfSleeping = (hour) => {
+  if (hour < 22 && hour > 5) {
+    document.body.classList.remove("sleeping");
+    return false;
+  } else {
+    document.body.classList.add("sleeping")
+    return true;
+  }
+}
+
+
 
 //Render game
 //Render gotchi name
@@ -167,7 +180,15 @@ const renderGameSection = () => {
     gameSectionRenderImage();
 
     const currentTime = getCurrentTimeSec();
-
+    const currentHour = getHour();
+    
+    //Check if asleep
+    const sleeping = checkIfSleeping(currentHour);
+    if (sleeping) {
+      return;
+    }
+    
+    console.log(9);
     const loved = getMood("loved");
     if (loved) {
       checkLove(currentTime);

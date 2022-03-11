@@ -32,6 +32,11 @@ const getCurrentTimeSec = () => {
   const sec = current.getTime() / 1000;
   return sec;
 }
+//Get current hour
+const getHour = () => {
+  const current = new Date();
+  return current.getHours();
+}
 
 //Save current time and date to local storage
 const setCurrentTime = (key, func) => {
