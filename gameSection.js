@@ -11,18 +11,22 @@ const getMood = (mood) => {
 
 //Check if any mood is bad
 const checkGoodMood = () => {
-  const happy = getMood("happy");
+  const loved = getMood("loved");
   const notHungry = getMood("notHungry");
   const notSick = getMood("notSick");
   const clean = getMood("clean");
 
-  if (happy && notHungry && notSick && clean) {
+  if (loved && notHungry && notSick) {
     return true;
   } else {
     return false;
   }
 }
 
+//Set if gotchi has or hasnt pooped in relation to their last feeding
+const havePooped = (state) => {
+  localStorage.setItem("havePooped", JSON.stringify(state));
+}
 
 //Set Mood times
 //Reset love
@@ -48,27 +52,85 @@ const pooped = () => {
 //Set sick time
 const becameSick = () => {
   setCurrentTime("becameSick", getCurrentTimeSec());
-
+}
+//Set death
+const dead = () => {
+  setCurrentTime("death", getCurrentTime());
+}
 
 
 //Compare moods to enter next stage
-//Check hunger
-const checkHunger = () => {
-  const notHungry = getMood("notHungry");
-  const lastFed = getTime("lastFed");
-  const currentTime = getCurrentTimeSec();
-  const difference = currentTime - lastFed;
-  //See if difference is more than two hours
-  if (notHungry) {
-    if (difference >= 7200) {
-      becameHungry();
-      saveMood("notHungry", false);
-    }
+//Check love
+const checkLove = (currentTime) => {
+  const lastLoved = getTime("lastLoved");
+  const difference = currentTime - lastLoved;
+  //See if difference is more than 6 hours (21600)
+  if (difference >= 21600) {
+    becameLonely();
+    saveMood("loved", false);
+  }
+}
+//Check loneliness
+const checkLoneliness = (currentTime) => {
+  const becameLonely = getTime("becameLonely");
+  const difference = currentTime - becameLonely;
+  //See if difference is more than 24 hours (86400);
+  if (difference >= 86400) {
+    dead();
   }
 }
 
-const
+//Check hunger
+const checkHunger = (currentTime) => {
+  const lastFed = getTime("lastFed");
+  const difference = currentTime - lastFed;
+  //See if difference is more than 4 hours (14400)
+  if (difference >= 14400) {
+    becameHungry();
+    saveMood("notHungry", false);
+  }
+}
+//Check hungry
+const checkHungry = (currentTime) => {
+  const becameHungry = getTime("becameHungry");
+  const difference = currentTime - becameHungry;
+  //See if differnce is mor than 24 hours (86400)
+  if (difference >= 86400) {
+    dead();
+  }
+}
 
+//Check poop
+const checkPoop = (currentTime) => {
+  const lastFed = getTime("lastFed");
+  const difference = currentTime - lastFed;
+  //See if the difference is more than 2 hours (7200)
+  if (difference >= 7200) {
+    pooped();
+    havePooped("true");
+    saveMood("clean", false);
+    document.querySelector("#poop").classList.remove("hidden");
+  }
+}
+//Check dirty
+const checkClean = (currentTime) => {
+  const pooped = getTime("pooped");
+  const difference = currentTime - pooped;
+  //See if the difference is more than 12 hours (43200)
+  if (difference >= 43200) {
+    becameSick();
+    saveMood("notSick", false);
+  }
+}
+//Check sick
+const checkSick = (currentTime) => {
+  const becameSick = getTime("becameSick");
+  const difference = currentTime - becameSick;
+  //See if the difference is more than 24 hours (86400)
+  if (difference >= 86400) {
+    dead();
+  }
+}
 
 
 
@@ -97,7 +159,34 @@ const renderGameSection = () => {
     gameSectionRenderName();
     gameSectionRenderImage();
 
-    checkHunger();
+    const currentTime = getCurrentTimeSec();
+
+    const loved = getMood("loved");
+    if (loved) {
+      checkLove(currentTime);
+    } else {
+      checkLoneliness(currentTime);
+    }
+
+    const notHungry = getMood("notHungry");
+    if (notHungry) {
+      checkHunger(currentTime);
+    } else {
+      checkHungry(currentTime);
+    }
+
+    const havePooped = JSON.parse(localStorage.getItem("havePooped"));
+    const clean = getMood("clean");
+    if (clean && !havePooped) {
+      checkPoop(currentTime);
+    }
+    const notSick = getMood("notSick");
+    if (!clean && notSick) {
+      checkClean(currentTime);
+    }
+    if (!notSick) {
+      checkSick(currentTime);
+    }
   }
 }
 

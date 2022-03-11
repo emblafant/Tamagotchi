@@ -17,16 +17,16 @@ document.querySelector("#cancelBtn").addEventListener("click", () => {
 document.querySelector("#confirmBtn").addEventListener("click", () => {
   goToGameSection();
 
-  renderGameSection();
-
   setStartTime();
   lastLoved();
   lastFed();
 
-  saveMood("happy", true);
+  saveMood("loved", true);
   saveMood("notHungry", true);
   saveMood("notSick", true);
   saveMood("clean", true);
+
+  renderGameSection();
 })
 
 //Start over button (end section)
