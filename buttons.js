@@ -18,6 +18,7 @@ document.querySelector("#confirmBtn").addEventListener("click", () => {
   goToGameSection();
 
   setStartTime();
+  setStartTimeSec();
   lastLoved();
   lastFed();
 
@@ -31,5 +32,6 @@ document.querySelector("#confirmBtn").addEventListener("click", () => {
 
 //Start over button (end section)
 document.querySelector("#startOverBtn").addEventListener("click", () => {
+  localStorage.clear();
   goToStartSection();
 })

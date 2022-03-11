@@ -58,7 +58,9 @@ const becameSick = () => {
 //Set death
 const dead = () => {
   setCurrentTime("death", getCurrentTime());
+  setCurrentTime("deathSec", getCurrentTimeSec());
   goToEndSection();
+  renderEndSection();
 }
 
 
@@ -89,7 +91,7 @@ const checkHunger = (currentTime) => {
   const lastFed = getTime("lastFed");
   const difference = currentTime - lastFed;
   //See if difference is more than 4 hours (14400)
-  if (difference >= 10) {
+  if (difference >= 14400) {
     becameHungry();
     saveMood("notHungry", false);
     show(hungryIcon);
@@ -100,7 +102,7 @@ const checkHungry = (currentTime) => {
   const becameHungry = getTime("becameHungry");
   const difference = currentTime - becameHungry;
   //See if differnce is mor than 24 hours (86400)
-  if (difference >= 10) {
+  if (difference >= 86400) {
     dead();
   }
 }

@@ -20,3 +20,7 @@ renderConfirmationSection();
 const setStartTime = () => {
   setCurrentTime("startTime", getCurrentTime());
 }
+
+const setStartTimeSec = () => {
+  setCurrentTime("startTimeSec", getCurrentTimeSec());
+}
