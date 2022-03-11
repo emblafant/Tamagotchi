@@ -1,3 +1,4 @@
+//Class to save gotchi type data
 class gotchi {
   constructor(type, happy, sad){
     this.type = type;
@@ -6,6 +7,7 @@ class gotchi {
   }
 }
 
+//Create gotchi types
 const gotchi1 = new gotchi(
   "gotchi1",
   "http://assets.stickpng.com/images/5a2d8f66b3c4622cbe3597af.png", 
@@ -24,4 +26,13 @@ const gotchi3 = new gotchi(
   "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6b372577-f8f4-4036-bb6b-0cb1fbbd59a2/dcuwzxu-5c0b31fb-b303-4ff0-bcf6-93a358a1fca1.jpg/v1/fill/w_452,h_478,q_75,strp/sad_memetchi_by_pixelchix33_dcuwzxu-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDc4IiwicGF0aCI6IlwvZlwvNmIzNzI1NzctZjhmNC00MDM2LWJiNmItMGNiMWZiYmQ1OWEyXC9kY3V3enh1LTVjMGIzMWZiLWIzMDMtNGZmMC1iY2Y2LTkzYTM1OGExZmNhMS5qcGciLCJ3aWR0aCI6Ijw9NDUyIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.OLxcarsH85Hm7-qnWmMZMLH6KgpGGLP-SRxOm743ZzA"
 )
 
+//Save gotchitypes in an array
 const gotchiTypeArr = [gotchi1, gotchi2, gotchi3];
+
+//Mood icons
+const moodIcons = {
+  "heart": '<i class="fa-solid fa-heart-crack"></i>',
+  "brokenHeart": '<i class="fa-solid fa-heart-crack"></i>',
+  "sick": '<i class="fa-solid fa-comment-medical"></i>',
+  "hungry": '<i class="fa-solid fa-drumstick-bite"></i>'
+}
