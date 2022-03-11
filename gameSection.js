@@ -68,6 +68,7 @@ const checkLove = (currentTime) => {
   if (difference >= 21600) {
     becameLonely();
     saveMood("loved", false);
+    show(lonelyIcon);
   }
 }
 //Check loneliness
@@ -88,6 +89,7 @@ const checkHunger = (currentTime) => {
   if (difference >= 14400) {
     becameHungry();
     saveMood("notHungry", false);
+    show(hungryIcon);
   }
 }
 //Check hungry
@@ -105,7 +107,7 @@ const checkPoop = (currentTime) => {
   const lastFed = getTime("lastFed");
   const difference = currentTime - lastFed;
   //See if the difference is more than 2 hours (7200)
-  if (difference >= 10) {
+  if (difference >= 7200) {
     pooped();
     havePooped("true");
     saveMood("clean", false);
@@ -120,6 +122,7 @@ const checkClean = (currentTime) => {
   if (difference >= 43200) {
     becameSick();
     saveMood("notSick", false);
+    show(sickIcon);
   }
 }
 //Check sick
