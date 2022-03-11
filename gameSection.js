@@ -1,16 +1,4 @@
-//Reset love
-const lastLoved = () => {
-  setCurrentTime("lastLoved", getCurrentTimeSec());
-}
-//Reset hunger
-const lastFed = () => {
-  setCurrentTime("lastFed", getCurrentTimeSec());
-}
-//Set sick countdown
-const becameSick = () => {
-  setCurrentTime("becameSick", getCurrentTimeSec());
-}
-
+//Get and set moods local storage
 //Set moods in local storage
 const saveMood = (mood, state) => {
   localStorage.setItem(mood, JSON.stringify(state));
@@ -35,6 +23,56 @@ const checkGoodMood = () => {
   }
 }
 
+
+//Set Mood times
+//Reset love
+const lastLoved = () => {
+  setCurrentTime("lastLoved", getCurrentTimeSec());
+}
+//Set loneliness time
+const becameLonely = () => {
+  setCurrentTime("becameLonely", getCurrentTimeSec());
+}
+//Reset hunger
+const lastFed = () => {
+  setCurrentTime("lastFed", getCurrentTimeSec());
+}
+//Set hungry time
+const becameHungry = () => {
+  setCurrentTime("becameHungry", getCurrentTimeSec());
+}
+//Set poop time (still uncleaned)
+const pooped = () => {
+  setCurrentTime("pooped", getCurrentTimeSec());
+}
+//Set sick time
+const becameSick = () => {
+  setCurrentTime("becameSick", getCurrentTimeSec());
+
+
+
+//Compare moods to enter next stage
+//Check hunger
+const checkHunger = () => {
+  const notHungry = getMood("notHungry");
+  const lastFed = getTime("lastFed");
+  const currentTime = getCurrentTimeSec();
+  const difference = currentTime - lastFed;
+  //See if difference is more than two hours
+  if (notHungry) {
+    if (difference >= 7200) {
+      becameHungry();
+      saveMood("notHungry", false);
+    }
+  }
+}
+
+const
+
+
+
+
+//Render game
 //Render gotchi name
 const gameSectionRenderName = () => {
   const gotchiName = getGotchiName();
@@ -57,12 +95,12 @@ const gameSectionRenderImage = () => {
 const renderGameSection = () => {
   if (getActiveSection() == "gameSection") {
     gameSectionRenderName();
+    gameSectionRenderImage();
 
-    //updates everysecond
-    setInterval(function(){
-      gameSectionRenderImage();
-    }, 1000)
+    checkHunger();
   }
 }
 
-renderGameSection();
+setInterval(function(){
+  renderGameSection();
+}, 1000)

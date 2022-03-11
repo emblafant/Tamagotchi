@@ -33,8 +33,6 @@ const getCurrentTimeSec = () => {
   return sec;
 }
 
-getCurrentTimeSec();
-
 //Save current time and date to local storage
 const setCurrentTime = (key, func) => {
   const currentTime = func;
