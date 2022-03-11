@@ -4,6 +4,7 @@
 document.querySelector("#adoptForm").addEventListener("submit", (e) => {
   goToConfirmationSection();
   saveAdoptionFormToLocalStorage();
+  renderConfirmationSection();
   e.preventDefault();
 })
 
@@ -15,6 +16,9 @@ document.querySelector("#cancelBtn").addEventListener("click", () => {
 //Confirm button (confirmation section)
 document.querySelector("#confirmBtn").addEventListener("click", () => {
   goToGameSection();
+  setStartTime();
+  lastLoved();
+  lastFed();
 })
 
 //Start over button (end section)
