@@ -53,9 +53,12 @@ const pooped = () => {
 const becameSick = () => {
   setCurrentTime("becameSick", getCurrentTimeSec());
 }
+
+
 //Set death
 const dead = () => {
   setCurrentTime("death", getCurrentTime());
+  goToEndSection();
 }
 
 
@@ -86,7 +89,7 @@ const checkHunger = (currentTime) => {
   const lastFed = getTime("lastFed");
   const difference = currentTime - lastFed;
   //See if difference is more than 4 hours (14400)
-  if (difference >= 14400) {
+  if (difference >= 10) {
     becameHungry();
     saveMood("notHungry", false);
     show(hungryIcon);
@@ -97,7 +100,7 @@ const checkHungry = (currentTime) => {
   const becameHungry = getTime("becameHungry");
   const difference = currentTime - becameHungry;
   //See if differnce is mor than 24 hours (86400)
-  if (difference >= 86400) {
+  if (difference >= 10) {
     dead();
   }
 }
@@ -109,7 +112,7 @@ const checkPoop = (currentTime) => {
   //See if the difference is more than 2 hours (7200)
   if (difference >= 7200) {
     pooped();
-    havePooped("true");
+    havePooped(true);
     saveMood("clean", false);
     show(document.querySelector("#poop"));
   }
@@ -158,7 +161,6 @@ const gameSectionRenderImage = () => {
 
 //Check if activesection is game section and render 
 const renderGameSection = () => {
-  if (getActiveSection() == "gameSection") {
     gameSectionRenderName();
     gameSectionRenderImage();
 
@@ -190,9 +192,54 @@ const renderGameSection = () => {
     if (!notSick) {
       checkSick(currentTime);
     }
-  }
 }
 
 setInterval(function(){
-  renderGameSection();
+  if (getActiveSection() == "gameSection") {
+    renderGameSection();
+  }
 }, 1000)
+
+//Show heart
+const showHeart = () => {
+  show(loveIcon);
+  setTimeout(() => {
+    hide(loveIcon);
+  }, 1000)
+}
+
+//Buttons
+loveBtn.addEventListener("click", () => {
+  saveMood("loved", true);
+  lastLoved();
+  localStorage.removeItem("becameLonely");
+  hide(lonelyIcon);
+
+  showHeart();
+});
+
+feedBtn.addEventListener("click", () => {
+  saveMood("notHungry", true);
+  lastFed();
+  localStorage.removeItem("becameHungry");
+  hide(hungryIcon);
+  havePooped(false);
+
+  showHeart();
+})
+
+medicineBtn.addEventListener("click", () => {
+  saveMood("notSick", true);
+  localStorage.removeItem("becameSick");
+  hide(sickIcon);
+
+  showHeart();
+})
+
+cleanBtn.addEventListener("click", () => {
+  saveMood("clean", true);
+  localStorage.removeItem("pooped");
+  hide(document.querySelector("#poop"));
+
+  showHeart();
+})
